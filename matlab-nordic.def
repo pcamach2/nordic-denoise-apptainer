@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: mathworks/matlab:r2022b
+
+%files
+        nordic_denoise.sh /opt/nordic_denoise.sh
+
+%post
+
+	apt-get update && apt-get install -y git wget
+        mkdir /opt/nordic && cd /opt/nordic && git clone https://github.com/SteenMoeller/NORDIC_Raw.git
+        cd /opt && wget https://www.mathworks.com/mpm/glnxa64/mpm && chmod +x mpm && /opt/mpm install --destination /opt/matlab/R2022b --release=R2022b --products Image_Processing_Toolbox Deep_Learning_Toolbox Signal_Processing_Toolbox Statistics_and_Machine_Learning_Toolbox 
+
+%environment
+        export MATLABPATH="$MATLABPATH:/opt/nordic/NORDIC_Raw"
+
+%runscript
+	echo "Starting MATLAB R2022b"
+        /bin/bash -c "/opt/nordic_denoise.sh -m ${1} -p ${2}"
+
