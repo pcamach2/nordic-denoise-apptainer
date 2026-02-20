@@ -11,6 +11,17 @@ apptainer build matlab-nordic.sif matlab-nordic.def
 
 ## Usage
 
+Export your MATLAB license file number:
 ```sh
-apptainer run -B /path/to/your/data:/data matlab-nordic.sif /data/your_mag.nii.gz /data/your_phase.nii.gz
+export MLM_LICENSE_FILE=<your license file number>
 ```
+
+Run Apptainer image:
+```sh
+apptainer run -B /path/to/your/data:/data matlab-nordic.sif -m /data/your_mag.nii.gz -p /data/your_phase.nii.gz
+```
+
+Or run BASH wrapper script:
+```sh
+./nordic_denoise.sh -m <magnitude.nii> -p <phase.nii>
+``` 
