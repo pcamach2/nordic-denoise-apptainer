@@ -1,6 +1,7 @@
 # nordic-denoise-apptainer
-Apptainer recipe and wrapper for running NORDIC denoising
+Apptainer recipe and wrapper for running automated NORDIC denoising.
 
+For license compliance, the code for performing NORDIC denoising should be downloaded from the official NORDIC repository (https://github.com/SteenMoeller/NORDIC_Raw/tree/main)
 
 ## Build
 
